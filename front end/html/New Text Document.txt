@@ -1,0 +1,9 @@
+<html>
+<head>
+</head>
+<body>
+<link rel="stylesheet" href="/css/search.css">
+<a style=href="/html/resume.html" target="_blank">Goutham reddy's resume</a>
+</body>
+</head>
+</html>
