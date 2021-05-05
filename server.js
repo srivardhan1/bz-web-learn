@@ -5,7 +5,8 @@ const app = express();
 app.use(express.static(__dirname+"/front end"));
  
 app.get("/", function(req, res){
-    res.send("Welcome to Srivardhan's Basic Site");
+let i=__dirname+"/front end/html/site.html";
+    res.sendFile(i);   
 })
 app.get("/resume", function(req, res){
 let i=__dirname+"/front end/html/resume.html";
