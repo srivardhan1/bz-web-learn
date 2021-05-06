@@ -4,11 +4,29 @@
 <title>colour picker</title>
 </head>
 <body>
-<div style="text-align:center">
-<input type="text" id="hex">
-<input type="color" id="color">
-</div>
+<p id="pcolor">Show Color Here</p>
+<center><h1>COLOUR PICKER</h1></center>
+<pre>
 
+
+<center><div id="color" style="top:5px;width:800px;height:200px;border-style:solid;"><pre>
+
+
+
+
+
+
+
+
+
+
+
+
+<p><input type="range" oninput="onColorRangeChange()" min="0" max="255" step="2" value="10" id="redSlider">Red Color</p>
+<p><input type="range" oninput="onColorRangeChange()" min="0" max="255" step="2" value="10" id="greenSlider">Green Color</p>
+<p><input type="range" oninput="onColorRangeChange()" min="0" max="255" step="2" value="10" id="blueSlider">Blue Color</p>
+  
+</pre>
 <script src="/javascript/colour.js"></script>
 </body>
 </html>
