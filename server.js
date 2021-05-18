@@ -1,6 +1,13 @@
 const express = require('express');
- 
+courselib=require('./backend/lib/courselib');
 const app = express();
+const mongoose=require('mongoose');
+var connectionString="mongodb+srv://Srivardhan:yamahai455@cluster0.guaut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+mongoose.connect(connectionString,{});
+mongoose.connection.on('connected',function(){
+console.log("Database Connected");
+});
+
 let request=0;
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
@@ -60,7 +67,14 @@ if(arr[i]==user)
 arr.splice(i,i);
 }
 }
-}); 
+});
+app.get("/crud", function(req, res){
+let i=__dirname+"/front end/html/crud.html";
+    res.sendFile(i);
+})
+app.get('/api/courses',courselib.getallcourses);
+app.post('/api/courses',courselib.createcourse);
+ 
 // Heroku will automatically set an environment variable called PORT
 const PORT = process.env.PORT || 3000;
  

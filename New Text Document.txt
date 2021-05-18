@@ -1,0 +1,4 @@
+const courselib=require('./backend/lib/courselib');
+courselib.createcourse({coursename:'Meanstack course'},function(err,course){
+console.log(course);
+})
