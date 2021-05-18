@@ -2,7 +2,8 @@ const express = require('express');
 courselib=require('./backend/lib/courselib');
 const app = express();
 const mongoose=require('mongoose');
-var connectionString="mongodb+srv://Srivardhan:yamahai455@cluster0.guaut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+var password=process.env.Mongo_atlas_password;
+var connectionString="mongodb+srv://Srivardhan:"+password+"@cluster0.guaut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose.connect(connectionString,{});
 mongoose.connection.on('connected',function(){
 console.log("Database Connected");
