@@ -11,22 +11,16 @@ callback(err,courseobj);
 }
 })
 }
-//module.exports.getallcourses=function(callback){
-module.exports.getallcourses=function(req,res){
-
+module.exports.getallcourses=function(callback){
 var query={}
 
 coursemodel.find(query,function(err,courseobjarr){
 if(err)
 {
-//console.log("err"+err);
-res.json({error:err});
+console.log("err"+err);
 }
 else{
-//callback(err,courseobj);
-res.json(courseobjarr);
+callback(err,courseobj);
 }
-
-
 })
 }
