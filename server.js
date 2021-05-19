@@ -1,5 +1,6 @@
 const express = require('express');
-courselib=require('./backend/lib/courselib');
+//const path=require('path');
+const courselib=require('./backend/lib/courselib');
 const app = express();
 const mongoose=require('mongoose');
 var password=process.env.Mongo_atlas_password;
@@ -8,10 +9,18 @@ mongoose.connect(connectionString,{});
 mongoose.connection.on('connected',function(){
 console.log("Database Connected");
 });
+mongoose.connection.on('error',function(error){
+console.log("Error in Mongodb connection:"+error);
+});
+mongoose.connection.on('disconnected',function(){
+console.log("Mongodb disconnected");
+});
+
 
 let request=0;
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+//app.use(express.static(path.join(__dirname,"static")));
 app.use(function(req,res,next){
 console.log("req came");
 request++;
@@ -69,12 +78,14 @@ arr.splice(i,i);
 }
 }
 });
-app.get("/crud", function(req, res){
+app.get("/crudd", function(req, res){
 let i=__dirname+"/front end/html/crud.html";
     res.sendFile(i);
 })
-app.get('/api/courses',courselib.getallcourses);
-app.post('/api/courses',courselib.createcourse);
+app.get("/crudd",courselib.getall);
+app.delete("/crud/:idd",courselib.deleteone);
+app.put("/crud/:idd",courselib.update);
+app.post("/crud",courselib.addnewone);
  
 // Heroku will automatically set an environment variable called PORT
 const PORT = process.env.PORT || 3000;
